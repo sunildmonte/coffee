@@ -21,11 +21,23 @@ class CoffeeApplicationTests {
 	    log.debug("list: {}", list);
 	}
 	
-	@Test
-	void test2() {
-	    List<Coffee> list = coffeeRepository.query2();
-	    log.debug("list: {}", list);
+    @Test
+    void test2() {
+        List<Coffee> list = coffeeRepository.query2();
+        log.debug("list: {}", list);
 	}
 	
+    @Test
+    void test3() {
+        List<Coffee> list = coffeeRepository.query3();
+        log.debug("list: {}", list);
+    }
+    
+    @Test
+    void test4() {
+        List<Coffee> list = coffeeRepository.query4();
+        log.debug("list: {}", list);
+    }
+    
 
 }

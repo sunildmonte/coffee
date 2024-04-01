@@ -1,5 +1,10 @@
 package com.example.demo;
 
+import java.sql.Types;
+
+import org.hibernate.annotations.JavaType;
+import org.hibernate.annotations.JdbcTypeCode;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -18,8 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Coffee {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
@@ -33,4 +36,13 @@ public class Coffee {
     @Column(name = "max_price")
     private MyMonetaryAmount maxPrice;
 
+    
+    @JavaType(MyMoneyJavaType.class)
+    @JdbcTypeCode(Types.NUMERIC)
+    private MyMonetaryAmount custom1;
+
+    @JavaType(MyMoneyJavaType.class)
+    @JdbcTypeCode(Types.NUMERIC)
+    private MyMonetaryAmount custom2;
+    
 }
