@@ -9,18 +9,20 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CoffeeRepository extends JpaRepository<Coffee, Long> {
 
-    @Query(value = "SELECT c FROM Coffee c where c.price / c.maxPrice <= 1")
-    List<Coffee> query1();
+    @Query(value = "SELECT c FROM Coffee c where c.price / c.maxPrice <= 1 ")
+    List<Coffee> converterAndSingleTerm();
 
-    @Query(value = "SELECT c FROM Coffee c where c.price <= 1 * c.maxPrice")
-    List<Coffee> query2();
+    @Query(value = "SELECT c FROM Coffee c where c.price / c.maxPrice <= 1 * 1")
+    List<Coffee> converterAndTwoTerms();
     
-    @Query(value = "SELECT c FROM Coffee c where c.custom1 / c.custom2 <= 1")
-    List<Coffee> query3();
+    @Query(value = "SELECT c FROM Coffee c where c.custom1 / c.custom2 <= 1 ")
+    List<Coffee> customTypeAndSingleTerm();
     
-    @Query(value = "SELECT c FROM Coffee c where c.custom1 <= 1 * c.custom2")
-    List<Coffee> query4();
+    @Query(value = "SELECT c FROM Coffee c where c.custom1 / c.custom2 <= 1 * 1")
+    List<Coffee> customTypeAndTwoTerms();
     
+    @Query(value = "SELECT c FROM Coffee c where c.bd1 / c.bd2 <= 1 ")
+    List<Coffee> bigDecimalsSingleTerm();
     
     
     

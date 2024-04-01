@@ -16,26 +16,32 @@ class CoffeeApplicationTests {
     private CoffeeRepository coffeeRepository;
     
 	@Test
-	void test1() {
-	    List<Coffee> list = coffeeRepository.query1();
+	void converterAndSingleTerm() {
+	    List<Coffee> list = coffeeRepository.converterAndSingleTerm();
+	    log.debug("list: {}", list);
+	}
+	
+	@Test
+	void converterAndTwoTerms() {
+	    List<Coffee> list = coffeeRepository.converterAndTwoTerms();
 	    log.debug("list: {}", list);
 	}
 	
     @Test
-    void test2() {
-        List<Coffee> list = coffeeRepository.query2();
+    void customTypeAndSingleTerm() {
+        List<Coffee> list = coffeeRepository.customTypeAndSingleTerm();
         log.debug("list: {}", list);
 	}
 	
     @Test
-    void test3() {
-        List<Coffee> list = coffeeRepository.query3();
+    void customTypeAndTwoTerms() {
+        List<Coffee> list = coffeeRepository.customTypeAndTwoTerms();
         log.debug("list: {}", list);
     }
     
     @Test
-    void test4() {
-        List<Coffee> list = coffeeRepository.query4();
+    void bigDecimals() {
+        List<Coffee> list = coffeeRepository.bigDecimalsSingleTerm();
         log.debug("list: {}", list);
     }
     

@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
 import java.sql.Types;
 
 import org.hibernate.annotations.JavaType;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.descriptor.jdbc.NumericJdbcType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
@@ -28,21 +31,31 @@ public class Coffee {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
+    
     @Convert(converter = MyMonetaryAmountConverter.class)
     @Column(name = "price")
+//    @JdbcType(NumericJdbcType.class)
     private MyMonetaryAmount price;
 
     @Convert(converter = MyMonetaryAmountConverter.class)
     @Column(name = "max_price")
+//    @JdbcType(NumericJdbcType.class)
     private MyMonetaryAmount maxPrice;
 
-    
+
     @JavaType(MyMoneyJavaType.class)
-    @JdbcTypeCode(Types.NUMERIC)
+//    @JdbcType(NumericJdbcType.class)
     private MyMonetaryAmount custom1;
 
     @JavaType(MyMoneyJavaType.class)
-    @JdbcTypeCode(Types.NUMERIC)
+//    @JdbcType(NumericJdbcType.class)
     private MyMonetaryAmount custom2;
     
+
+    @Column(name = "bd1")
+    private BigDecimal bd1;
+
+    @Column(name = "bd2")
+    private BigDecimal bd2;
+
 }
