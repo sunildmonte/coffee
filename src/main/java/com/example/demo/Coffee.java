@@ -3,6 +3,8 @@ package com.example.demo;
 import java.math.BigDecimal;
 import java.sql.Types;
 
+import javax.money.MonetaryAmount;
+
 import org.hibernate.annotations.JavaType;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -32,30 +34,32 @@ public class Coffee {
     private Long id;
 
     
-    @Convert(converter = MyMonetaryAmountConverter.class)
+    @Convert(converter = MonetaryAmountConverter.class)
     @Column(name = "price")
-//    @JdbcType(NumericJdbcType.class)
-    private MyMonetaryAmount price;
+    private MonetaryAmount price;
 
-    @Convert(converter = MyMonetaryAmountConverter.class)
+    @Convert(converter = MonetaryAmountConverter.class)
     @Column(name = "max_price")
-//    @JdbcType(NumericJdbcType.class)
-    private MyMonetaryAmount maxPrice;
+    private MonetaryAmount maxPrice;
 
 
-    @JavaType(MyMoneyJavaType.class)
-//    @JdbcType(NumericJdbcType.class)
-    private MyMonetaryAmount custom1;
-
-    @JavaType(MyMoneyJavaType.class)
-//    @JdbcType(NumericJdbcType.class)
-    private MyMonetaryAmount custom2;
-    
-
-    @Column(name = "bd1")
-    private BigDecimal bd1;
-
-    @Column(name = "bd2")
-    private BigDecimal bd2;
-
+//    @JavaType(MyMoneyJavaType.class)
+////    @JdbcType(NumericJdbcType.class)
+//    private MyMonetaryAmount custom1;
+//
+//    @JavaType(MyMoneyJavaType.class)
+////    @JdbcType(NumericJdbcType.class)
+//    private MyMonetaryAmount custom2;
+//    
+//
+//    @Column(name = "bd1")
+//    private BigDecimal bd1;
+//
+//    @Column(name = "bd2")
+//    private BigDecimal bd2;
+//
+    @Override
+    public String toString() {
+        return price.toString();
+    }
 }

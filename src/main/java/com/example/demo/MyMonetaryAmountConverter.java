@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import jakarta.persistence.AttributeConverter;
 
+@Deprecated
 public class MyMonetaryAmountConverter implements AttributeConverter<MyMonetaryAmount, BigDecimal> {
     
     @Override
